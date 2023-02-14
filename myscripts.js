@@ -25,20 +25,24 @@ numButtons.forEach((button) => {
 })
 
 addButton.addEventListener('click', () => {
+    valueCalc.push(addButton.textContent);
     console.log(valueCalc)
-    valueCalc = [add(valueCalc[0], valueCalc[1])]
+    //valueCalc = [add(valueCalc[0], valueCalc[2])]
 })
 
 subtractButton.addEventListener('click', () => {
-    valueCalc = [subtract(valueCalc[0], valueCalc[1])]
+    valueCalc.push(subtractButton.textContent);
+   // valueCalc = [subtract(valueCalc[0], valueCalc[1])]
 })
 
 multiplyButton.addEventListener('click', () => {
-    valueCalc = [multiply(valueCalc[0], valueCalc[1])]
+    valueCalc.push(multiplyButton.textContent);
+   // valueCalc = [multiply(valueCalc[0], valueCalc[1])]
 })
 
 divideButton.addEventListener('click', () => {
-    valueCalc = [divide(valueCalc[0], valueCalc[1])]
+    valueCalc.push(divideButton.textContent);
+   // valueCalc = [divide(valueCalc[0], valueCalc[1])]
 })
 
 equalButton.addEventListener('click', () => {
@@ -66,6 +70,15 @@ function divide(x, y) {
 }
 
 function operate() {
+    if(valueCalc.includes('+')){
+        valueCalc = [add(valueCalc[0], valueCalc[2])];
+    } else if(valueCalc.includes('-')){
+        valueCalc = [subtract(valueCalc[0], valueCalc[2])];
+    } else if (valueCalc.includes('x')){
+        valueCalc = [multiply(valueCalc[0], valueCalc[2])];
+    } else if (valueCalc.includes('÷')){
+        valueCalc = [divide(valueCalc[0], valueCalc[2])]
+    }
     valueShown.textContent = valueCalc;
     console.log(parseInt(valueCalc))
 }
