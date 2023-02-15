@@ -36,22 +36,45 @@ numButtons.forEach((button) => {
 
 addButton.addEventListener('click', () => {
     valueCalc.push(addButton.textContent);
+    if(valueCalc.length > 3){
+        valueCalc = valueCalc.slice(0,3)
+        operate();
+        valueCalc.push(addButton.textContent);
+    }
     console.log(valueCalc)
     //valueCalc = [add(valueCalc[0], valueCalc[2])]
 })
 
 subtractButton.addEventListener('click', () => {
     valueCalc.push(subtractButton.textContent);
+    if(valueCalc.length > 3){
+        valueCalc = valueCalc.slice(0,3)
+        operate();
+        valueCalc.push(subtractButton.textContent);
+    }
+    console.log(valueCalc)
    // valueCalc = [subtract(valueCalc[0], valueCalc[1])]
 })
 
 multiplyButton.addEventListener('click', () => {
     valueCalc.push(multiplyButton.textContent);
+    if(valueCalc.length > 3){
+        valueCalc = valueCalc.slice(0,3)
+        operate();
+        valueCalc.push(multiplyButton.textContent);
+    }
+    console.log(valueCalc)
    // valueCalc = [multiply(valueCalc[0], valueCalc[1])]
 })
 
 divideButton.addEventListener('click', () => {
     valueCalc.push(divideButton.textContent);
+    if(valueCalc.length > 3){
+        valueCalc = valueCalc.slice(0,3)
+        operate();
+        valueCalc.push(divideButton.textContent);
+    }
+    console.log(valueCalc)
    // valueCalc = [divide(valueCalc[0], valueCalc[1])]
 })
 
