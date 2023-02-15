@@ -9,6 +9,7 @@ const equalButton = document.querySelector(".buttonEqual");
 const clearButton = document.querySelector(".buttonClear")
 let valueShown = document.querySelector(".valueShown")
 let valueCalc = [];
+let clicked = false
 
 clearButton.addEventListener('click', () => {
     valueCalc = [];
@@ -18,7 +19,12 @@ clearButton.addEventListener('click', () => {
 
 numButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        valueCalc.push(button.textContent);
+        let num1 = button.textContent;
+        valueCalc.push(num1);
+        if(valueCalc.length > 1 && !isNaN(valueCalc[1]) ){
+            valueCalc[0] += valueCalc[1];
+            valueCalc = valueCalc.slice(0, 1)
+        }
         valueShown.textContent = valueCalc;
         console.log(valueCalc)
     })
