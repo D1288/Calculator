@@ -25,6 +25,10 @@ numButtons.forEach((button) => {
             valueCalc[0] += valueCalc[1];
             valueCalc = valueCalc.slice(0, 1)
         }
+        if(valueCalc.length >= 3 && !isNaN(valueCalc[3])){
+            valueCalc[2] += valueCalc[3];
+            valueCalc = valueCalc.slice(0,3)
+        }
         valueShown.textContent = valueCalc;
         console.log(valueCalc)
     })
@@ -86,5 +90,5 @@ function operate() {
         valueCalc = [divide(valueCalc[0], valueCalc[2])]
     }
     valueShown.textContent = valueCalc;
-    console.log(parseInt(valueCalc))
+    console.log(valueCalc)
 }
