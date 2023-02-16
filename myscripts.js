@@ -9,13 +9,15 @@ const equalButton = document.querySelector(".buttonEqual");
 const clearButton = document.querySelector(".buttonClear")
 let valueShown = document.querySelector(".valueShown")
 let valueCalc = [];
-let clicked = false
-
+let numbers = ['1','2','3','4','5','6','7','8','9']
+let operators = [ '+','-','x','÷']
 clearButton.addEventListener('click', () => {
     valueCalc = [];
     valueShown.textContent = valueCalc;
     console.log(valueCalc)
 })
+
+
 
 numButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -25,17 +27,21 @@ numButtons.forEach((button) => {
             valueCalc[0] += valueCalc[1];
             valueCalc = valueCalc.slice(0, 1)
         }
-        if(valueCalc.length >= 3 && !isNaN(valueCalc[3])){
+        if(valueCalc.length > 3 && !isNaN(valueCalc[3])){
             valueCalc[2] += valueCalc[3];
             valueCalc = valueCalc.slice(0,3)
         }
-        valueShown.textContent = valueCalc;
+        valueShown.textContent = valueCalc.toString().replaceAll(',', '');
         console.log(valueCalc)
     })
 })
 
 addButton.addEventListener('click', () => {
     valueCalc.push(addButton.textContent);
+    if(valueCalc.length > 2 && !numbers.includes(valueCalc[2]) ){
+        valueCalc[1] = valueCalc[2];
+        valueCalc = valueCalc.slice(0,2)
+    }
     if(valueCalc.length > 3){
         valueCalc = valueCalc.slice(0,3)
         operate();
@@ -47,6 +53,10 @@ addButton.addEventListener('click', () => {
 
 subtractButton.addEventListener('click', () => {
     valueCalc.push(subtractButton.textContent);
+    if(valueCalc.length > 2 && !numbers.includes(valueCalc[2]) ){
+        valueCalc[1] = valueCalc[2];
+        valueCalc = valueCalc.slice(0,2)
+    }
     if(valueCalc.length > 3){
         valueCalc = valueCalc.slice(0,3)
         operate();
@@ -58,6 +68,10 @@ subtractButton.addEventListener('click', () => {
 
 multiplyButton.addEventListener('click', () => {
     valueCalc.push(multiplyButton.textContent);
+    if(valueCalc.length > 2 && !numbers.includes(valueCalc[2]) ){
+        valueCalc[1] = valueCalc[2];
+        valueCalc = valueCalc.slice(0,2)
+    }
     if(valueCalc.length > 3){
         valueCalc = valueCalc.slice(0,3)
         operate();
@@ -69,6 +83,10 @@ multiplyButton.addEventListener('click', () => {
 
 divideButton.addEventListener('click', () => {
     valueCalc.push(divideButton.textContent);
+    if(valueCalc.length > 2 && !numbers.includes(valueCalc[2]) ){
+        valueCalc[1] = valueCalc[2];
+        valueCalc = valueCalc.slice(0,2)
+    }
     if(valueCalc.length > 3){
         valueCalc = valueCalc.slice(0,3)
         operate();
