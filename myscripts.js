@@ -119,14 +119,20 @@ equalButton.addEventListener('click', () => {
 
 
 decimalButton.addEventListener('click', ()=>{
-    valueCalc.push(decimalButton.textContent);
+    if(!valueCalc[0].includes('.')){
+        valueCalc.push(decimalButton.textContent);
+    } else if(!isNaN(valueCalc[2]) && !valueCalc[2].includes('.')){
+        valueCalc.push(decimalButton.textContent);
+    }
     if(valueCalc.length > 1 && valueCalc[1] === '.' ){
         valueCalc[0] += valueCalc[1];
         valueCalc = valueCalc.slice(0, 1)
     }
+    
     if(valueCalc.length > 3 && valueCalc[3] === '.'){
         valueCalc[2] += valueCalc[3];
         valueCalc = valueCalc.slice(0,3)
+        
     }
 
 
