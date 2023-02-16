@@ -8,6 +8,7 @@ const decimalButton = document.querySelector(".buttonDecimal");
 const equalButton = document.querySelector(".buttonEqual");
 const clearButton = document.querySelector(".buttonClear")
 let valueShown = document.querySelector(".valueShown")
+let backspace = document.querySelector(".backspace")
 let valueCalc = [];
 let numbers = ['1','2','3','4','5','6','7','8','9']
 let operators = [ '+','-','x','÷']
@@ -18,6 +19,12 @@ let operators = [ '+','-','x','÷']
 clearButton.addEventListener('click', () => {
     valueCalc = [];
     valueShown.textContent = valueCalc;
+    console.log(valueCalc)
+})
+
+backspace.addEventListener('click', ()=>{
+    valueCalc.pop()
+    valueShown.textContent = valueCalc.toString().replaceAll(',', '')
     console.log(valueCalc)
 })
 
@@ -54,6 +61,7 @@ addButton.addEventListener('click', () => {
         operate();
         valueCalc.push(addButton.textContent);
     }
+    valueShown.textContent = valueCalc.toString().replaceAll(',', '');
     console.log(valueCalc)
     //valueCalc = [add(valueCalc[0], valueCalc[2])]
 })
@@ -72,6 +80,7 @@ subtractButton.addEventListener('click', () => {
         operate();
         valueCalc.push(subtractButton.textContent);
     }
+    valueShown.textContent = valueCalc.toString().replaceAll(',', '');
     console.log(valueCalc)
    // valueCalc = [subtract(valueCalc[0], valueCalc[1])]
 })
@@ -90,6 +99,7 @@ multiplyButton.addEventListener('click', () => {
         operate();
         valueCalc.push(multiplyButton.textContent);
     }
+    valueShown.textContent = valueCalc.toString().replaceAll(',', '');
     console.log(valueCalc)
    // valueCalc = [multiply(valueCalc[0], valueCalc[1])]
 })
@@ -108,6 +118,7 @@ divideButton.addEventListener('click', () => {
         operate();
         valueCalc.push(divideButton.textContent);
     }
+    valueShown.textContent = valueCalc.toString().replaceAll(',', '');
     console.log(valueCalc)
    // valueCalc = [divide(valueCalc[0], valueCalc[1])]
 })
@@ -155,8 +166,12 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
+    if(y === '0'){
+        return 'you buffoon'
+    }
     return x / y;
 }
+
 
 function operate() {
     if(valueCalc.includes('+')){
