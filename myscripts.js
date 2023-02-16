@@ -11,6 +11,10 @@ let valueShown = document.querySelector(".valueShown")
 let valueCalc = [];
 let numbers = ['1','2','3','4','5','6','7','8','9']
 let operators = [ '+','-','x','÷']
+
+
+
+
 clearButton.addEventListener('click', () => {
     valueCalc = [];
     valueShown.textContent = valueCalc;
@@ -38,6 +42,9 @@ numButtons.forEach((button) => {
 
 addButton.addEventListener('click', () => {
     valueCalc.push(addButton.textContent);
+    if(valueCalc.length ===1 && !numbers.includes(valueCalc[0]) ){
+        valueCalc = [];
+    }
     if(valueCalc.length > 2 && !numbers.includes(valueCalc[2]) ){
         valueCalc[1] = valueCalc[2];
         valueCalc = valueCalc.slice(0,2)
@@ -53,6 +60,9 @@ addButton.addEventListener('click', () => {
 
 subtractButton.addEventListener('click', () => {
     valueCalc.push(subtractButton.textContent);
+    if(valueCalc.length ===1 && !numbers.includes(valueCalc[0]) ){
+        valueCalc = [];
+    }
     if(valueCalc.length > 2 && !numbers.includes(valueCalc[2]) ){
         valueCalc[1] = valueCalc[2];
         valueCalc = valueCalc.slice(0,2)
@@ -68,6 +78,9 @@ subtractButton.addEventListener('click', () => {
 
 multiplyButton.addEventListener('click', () => {
     valueCalc.push(multiplyButton.textContent);
+    if(valueCalc.length ===1 && !numbers.includes(valueCalc[0]) ){
+        valueCalc = [];
+    }
     if(valueCalc.length > 2 && !numbers.includes(valueCalc[2]) ){
         valueCalc[1] = valueCalc[2];
         valueCalc = valueCalc.slice(0,2)
@@ -83,6 +96,9 @@ multiplyButton.addEventListener('click', () => {
 
 divideButton.addEventListener('click', () => {
     valueCalc.push(divideButton.textContent);
+    if(valueCalc.length ===1 && !numbers.includes(valueCalc[0]) ){
+        valueCalc = [];
+    }
     if(valueCalc.length > 2 && !numbers.includes(valueCalc[2]) ){
         valueCalc[1] = valueCalc[2];
         valueCalc = valueCalc.slice(0,2)
@@ -101,6 +117,15 @@ equalButton.addEventListener('click', () => {
 })
 
 
+
+decimalButton.addEventListener('click', ()=>{
+    valueCalc.push(decimalButton.textContent);
+
+
+
+
+    console.log(valueCalc);
+})
 
 //Math functions
 
